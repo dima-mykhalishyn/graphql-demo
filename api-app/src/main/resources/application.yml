@@ -1,0 +1,20 @@
+spring:
+    application:
+        name: demo-graphql-api
+management.endpoints.web.exposure.include: health,info,metrics,httptrace
+management.trace.http.include: REQUEST_HEADERS,RESPONSE_HEADERS,COOKIE_HEADERS,AUTHORIZATION_HEADER,PRINCIPAL,REMOTE_ADDRESS,SESSION_ID,TIME_TAKEN
+oauth2:
+    security:
+        enabled: true
+        endpoints: /graphql
+security:
+    basic:
+        enabled: false
+
+logging.level.akka: TRACE
+logging.level.graphql: TRACE
+
+akka.cluster.init.delay.seconds: 30
+#server:
+#  port: 8081
+

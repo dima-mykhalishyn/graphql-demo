@@ -1,0 +1,17 @@
+scalar Date
+scalar Long
+scalar BigDecimal
+scalar DateTime
+
+schema {
+    query : Query
+    subscription : Subscription
+}
+
+type Query {
+    getTasks(ids: [Int]!): [TaskResponse]!
+}
+
+type Subscription {
+    getTasks: TaskResponse
+}

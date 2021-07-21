@@ -1,0 +1,16 @@
+# ============================ Task DTO =============================
+type TaskResponse {
+    key: Int
+    task: TaskResource
+}
+
+type TaskResource {
+    id: Int
+    name: String
+    status: StatusResource
+}
+
+type StatusResource {
+    code: String
+    description: String
+}

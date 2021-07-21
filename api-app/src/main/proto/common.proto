@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package common;
+
+import public "google/protobuf/wrappers.proto";
+
+option java_package = "com.dmihalishin.graphql.reactive.spring.api.app.service.akka.dto.commons";
+option java_multiple_files = true;
+
+message EmptyResponse {
+    string traceId = 1;
+}
+
+message Reference {
+    string code = 1;
+    string description = 2;
+}
+
+message BigDecimal {
+    string value = 1;
+}
+
+message Date {
+    google.protobuf.Int32Value day = 1;
+    google.protobuf.Int32Value month = 2;
+    google.protobuf.Int32Value year = 3;
+}

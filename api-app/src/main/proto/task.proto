@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package category;
+
+import public "common.proto";
+
+option java_package = "com.dmihalishin.graphql.reactive.spring.api.app.service.akka.dto.task";
+option java_multiple_files = true;
+
+message TaskDataRequest {
+    string traceId = 1;
+    int32 id = 2;
+    repeated string attributes = 3;
+}
+
+message TaskDataResponse {
+    string traceId = 1;
+    TaskEntity entity = 2;
+}
+
+message TaskEntity {
+    int32 id = 1;
+    string name = 2;
+    common.Reference status = 3;
+}

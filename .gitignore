@@ -1,0 +1,42 @@
+**/target
+.idea
+**/*.iml
+
+# target folders
+*/*/target/
+*/target/
+target/
+
+#eclipse related files
+*/*/.settings/
+*/.settings/
+/.settings/
+/.classpath
+*/.classpath
+*/*/.classpath
+/.eclipse-pmd
+/.project
+*/.project
+*/*/.project
+/.springBeans
+/.factorypath
+*/.factorypath
+*/*/.factorypath
+
+#bin directory
+/bin/
+*/*/bin/
+*/bin/
+
+#data directory
+/data/
+*/src/test/resources/elasticsearch_dist/
+
+#class files
+*.class
+
+#log files
+*.log
+
+.metadata/
+Servers/

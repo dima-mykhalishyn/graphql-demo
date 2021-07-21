@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>api-data-model</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.dmihalishin.graphql.reactive.spring</groupId>
+        <artifactId>graphql-demo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <!--Enable Swagger annotations-->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <!--Lombok for POJO classes-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.kobylynskyi</groupId>
+            <artifactId>graphql-java-codegen</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.github.kobylynskyi</groupId>
+                <artifactId>graphql-codegen-maven-plugin</artifactId>
+                <version>4.1.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-server</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <!-- all config options:
+                            https://github.com/kobylynskyi/graphql-java-codegen/blob/master/docs/codegen-options.md
+                            -->
+                            <graphqlSchemas>
+                                <includePattern>^(schema|[a-z\-]+-model){1}\.graphqls</includePattern>
+                            </graphqlSchemas>
+                            <outputDir>${project.build.directory}/generated-sources/graphql</outputDir>
+                            <packageName>com.dmihalishin.graphql.reactive.spring.api.datamodel.resources.graphql</packageName>
+                            <customTypesMapping>
+                                <DateTime>java.time.OffsetDateTime</DateTime>
+                                <Date>java.time.LocalDate</Date>
+                                <Long>java.lang.Long</Long>
+                                <BigInteger>java.math.BigInteger</BigInteger>
+                                <BigDecimal>java.math.BigDecimal</BigDecimal>
+                            </customTypesMapping>
+                            <useObjectMapperForRequestSerialization>Date</useObjectMapperForRequestSerialization>
+                            <generateEqualsAndHashCode>true</generateEqualsAndHashCode>
+                            <generateClient>true</generateClient>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
